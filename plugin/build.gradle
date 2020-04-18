@@ -1,0 +1,44 @@
+apply plugin: 'groovy'
+apply plugin: 'java-gradle-plugin'
+apply plugin: 'com.gradle.plugin-publish'
+apply from: 'localPublish.gradle'
+
+group = 'com.cisco.gradle'
+version = '1.15'
+
+sourceCompatibility = '1.6'
+targetCompatibility = '1.6'
+
+dependencies {
+    compile localGroovy()
+    compile gradleApi()
+    testCompile gradleTestKit()
+    testCompile('org.spockframework:spock-core:1.0-groovy-2.4') {
+        exclude module: 'groovy-all'
+    }
+}
+
+task buildExamples(type: GradleBuild) {
+    dir 'examples'
+    tasks = ['build']
+}
+
+test {
+    testLogging {
+        exceptionFormat = 'full'
+    }
+}
+
+pluginBundle {
+    website = publishHomepage
+    vcsUrl = publishHomepage
+    description = 'A Gradle plugin for seamlessly integrating with other build tools, including GNU make, CMake, qmake, and more.'
+    tags = ['native', 'make', 'automake', 'autoconf', 'cmake', 'qmake']
+
+    plugins {
+        externalBuildPlugin {
+            id = 'com.cisco.external-build'
+            displayName = 'Gradle external build plugin'
+        }
+    }
+}
