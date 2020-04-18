@@ -1,33 +1,40 @@
 buildscript {
     repositories {
-        mavenCentral()
-        mavenLocal()
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
         google()
         jcenter()
         maven {
-            url 'https://plugins.gradle.org/m2'
+            url "https://maven.google.com"
         }
+        mavenCentral()
+        mavenLocal()
     }
     dependencies {
-        classpath 'com.gradle.publish:plugin-publish-plugin:0.9.7'
+        classpath 'com.gradle.publish:plugin-publish-plugin:0.11.0'
+        classpath "gradle.plugin.com.cisco.gradle:gradle-external-build:1.14"
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        jcenter()
+        maven {
+            url "https://maven.google.com"
+        }
+        maven {
+            url 'https://plugins.gradle.org/m2'
+        }
+        mavenCentral()
+        mavenLocal()
     }
 }
 
 ext {
     publishName = 'external-build'
     publishHomepage = 'https://github.com/awrichar/gradle-external-build'
-}
-
-allprojects {
-    repositories {
-        mavenCentral()
-        mavenLocal()
-        google()
-        jcenter()
-        maven {
-            url 'https://plugins.gradle.org/m2'
-        }
-    }
 }
 
 task clean(type: Delete) {

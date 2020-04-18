@@ -1,4 +1,4 @@
 rootProject.name='gradle-external-build'
-include ':plugin'
+include ':gradle-external-build'
 include ':CppSub'
 project(":CppSub").projectDir = file("./testStub")
