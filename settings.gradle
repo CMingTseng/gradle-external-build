@@ -2,3 +2,9 @@ rootProject.name='gradle-external-build'
 include ':gradle-external-build'
 include ':CppSub'
 project(":CppSub").projectDir = file("./testStub")
+include 'cmake'
+project(":cmake").projectDir = file("./examples/cmake")
+//include 'make'
+//project(":make").projectDir = file("./examples/make")
+//include  'qmake'
+//project(":qmake").projectDir = file("./examples/qmake")

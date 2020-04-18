@@ -1,1 +1,3 @@
-include 'make', 'cmake', 'qmake'
+include 'make'
+include 'cmake'
+include 'qmake'
