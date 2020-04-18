@@ -1,7 +1,5 @@
-plugins {
-    id 'com.cisco.external-build' version '1.10'
-}
-
+apply plugin: 'com.cisco.external-build'
+//import com.cisco.gradle.externalbuild.ExternalNativeLibrarySpec
 import com.cisco.gradle.externalbuild.ExternalNativeExecutableSpec
 import com.cisco.gradle.externalbuild.tasks.QMake
 
